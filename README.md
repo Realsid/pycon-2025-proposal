@@ -1,1 +1,0 @@
-# pycon-2025-proposal
