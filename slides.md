@@ -7,8 +7,6 @@ Note: Opening slide - title only
 
 ## Autonomous Retail Challenge
 
-<!-- .slide: data-background="#f7f7f7" -->
-
 - **The Four Critical Questions**: Who took What from Where and When
 - **Multiple Decision Points**: Camera tracking, product recognition, action detection
 - **Accuracy vs. Cost**: Customer trust requires precision
@@ -46,8 +44,6 @@ Note: Opening context slide
 ---
 
 ## Technology Selection Rationale
-
-<!-- .slide: data-transition="slide" -->
 
 - **FastAPI vs Flask/Django**: Async support, performance, built-in validation
 - **Redis Streams vs Celery/RabbitMQ/Kafka**: Simpler operations, built-in consumer groups 
