@@ -1,5 +1,4 @@
-# Building Scalable AI Decision Systems in Python
-## Balancing Automation and Human Review in Checkout-Free Retail
+# Building Scalable ML Decision Systems with Human in the Loop for Retail
 
 Note: Title slide (30 sec)
 
@@ -211,15 +210,4 @@ Note: Summary of key points (1 min) - reinforce main messages
 
 ## Questions?
 
-Contact:
-- Email: [your@email.com]
-- GitHub: [yourusername]
-- Twitter: [@yourusername]
-
 Note: Q&A session (5 min)
-
----
-
-## Thank You!
-
-Note: Closing (30 sec)

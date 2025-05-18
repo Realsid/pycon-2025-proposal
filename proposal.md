@@ -1,10 +1,10 @@
-# Building Scalable AI Decision Systems in Python: Balancing Automation and Human Review in Checkout Free Retail
+# Building Scalable ML Decision Systems with Human in the Loop for Retail
 
 ## Abstract
 
 Autonomous checkout-free stores represent the future of retail, allowing customers to simply take products and walk out without scanning or waiting in line. However, these systems create significant technical challenges: they must identify who took what products from where, and do so with extraordinary accuracy and strict latency requirements while controlling operational costs.
 
-This talk explores how we built a distributed Python-based decision system that serves as a configurable proxy between decision systems responsible for tracking and cart verification and human reviewers across 100+ retail locations worldwide. By implementing an asynchronous architecture with FastAPI, Redis Streams, and custom Python workers, we created a platform that reduced human review workload by 30% while maintaining the high accuracy essential for customer trust.
+This talk explores how we built a distributed Python-based decision system that serves as a proxy between decision systems responsible for tracking and cart verification and human in the loop across 100+ retail locations worldwide. By implementing an asynchronous architecture with FastAPI, Redis Streams, and custom Python workers, we created a platform that reduced human review workload by 30% while maintaining the high accuracy essential for customer trust.
 
 We will share practical techniques for building configurable Python systems that intelligently route decisions between automation and human review, approaches for handling location-specific configurations at scale, and strategies for safely deploying experimental ML models without disrupting critical production components. By the end of the talk, you will have a good understanding what it takes to build a scalable decision system that can be deployed in a production environment.
 
@@ -29,6 +29,7 @@ This talk is aimed at intermediate to advanced Python developers who:
   - Product recognition service: Responsible for recognizing the products in the store
   - Action recognition service: Responsible for recognizing the action of the person in the store near shelves could be based on camera feeds or sensors
   - Cart services : Responsible for reconciling processing tracking data with cart state and generating receipts
+- We will introduce why we need human in the loop (HITL) in the system
 
 ### Core Challenges 
 - We will then dive into the multiple decision points requiring intelligence:
@@ -41,9 +42,9 @@ This talk is aimed at intermediate to advanced Python developers who:
   - You have to avoid charging the wrong customer for wrong products and also avoid losing money from products that are taken without paying. Human review is expensive and you can't scale it.
   - Need for human review in ambiguous cases.
   - Reducing HITL cost while maintaining accuracy
-- We will introduce the need for a middle layer between decision systems and human reviewers.
+- We will introduce the need for a middle layer between "generalist" decision systems and human reviewers.
   - Introduce "The Bitter lesson", how programming rules dont scale and how we need to decouple specific solutions from general decision architecture, but that doesnt mean that programmed rules dont yield gains. They just dont scale, so do not over engineer your general decision system.
-  - Creating systems for safe experimentation with new algorithms
+  - Creating systems for safe experimentation with new algorithms and models
 
 ## System Architecture (15 mins)
 
@@ -77,7 +78,7 @@ This talk is aimed at intermediate to advanced Python developers who:
 
 - **Monitoring and Observability**
   - We will discuss importance of contextual logging and monitoring to debug production issues
-  - How we monitor the system using Grafana 
+  - How we monitored the system using Grafana 
 
 - **Deployment Architecture**
   - Container orchestration with Kubernetes
@@ -92,6 +93,7 @@ This talk is aimed at intermediate to advanced Python developers who:
   - Decision time improvements and customer experience impact
 
 - Critical production lessons:
+  - Before using a 3rd party library do research on stability issues
   - Have a plan for deployment and rollbacks for releases
   - Contextual logging is key to debugging production issues
   - Avoiding dual write patterns to databases to avoid inconsistencies
@@ -102,10 +104,7 @@ This talk is aimed at intermediate to advanced Python developers who:
 
 ## Speaker Bio
 
-Hareesh Kolloru, Head of AI/ML at Motive
+Hareesh Kolluru is an AI/ML leader with over 16 years of experience turning cutting-edge research into real-world AI systems. From deploying deep learning models on platforms like ARM Cortex and NVIDIA Jetson to building AI solutions for commercial fleets and self-driving platforms, his work has made a real impact. He’s also an inventor with six U.S. patents in edge AI and privacy-preserving vision, and his contributions have earned him recognition like the Sports Business Journal Innovation Award and the Retail Tech Innovation Hub Award.
+Hareesh has led AI projects at companies like Motive, Zippin, and Faraday Future, where he developed AI-driven solutions to make systems safer and more efficient. He’s passionate about building practical, real-time AI applications that work in constrained environments and loves sharing his insights through talks, workshops, and mentoring. Outside of work, you’ll find him brainstorming new ways to make AI more human-centric and mentoring startups on leveraging AI for real-world impact.
 
-Sidharth Singh, Staff Software Engineer, ML at Zippin, has 8 years of experience architecting ML systems processing 10M+ daily inference requests across 120+ retail locations. Led design and implementation of distributed ML pipelines across retail, manufacturing, and enterprise domains. 
-
-## Supplementary Materials
-
-## Talk Links
+Sidharth Singh, Staff Software Engineer, ML at Zippin, is a seasoned ML architect with 8+ years specializing in production-grade distributed systems. He started his career building chat bots for customer support usecases, doing RAG before it was cool. His expertise expanded to developing mission-critical ML systems for manufacturing operations at Rockwell Automation and ITC, where he solved complex industrial automation challenges. At Zippin, he architected the core ML infrastructure powering computer vision systems across 120+ global retail locations, processing 10M+ daily inference requests. He owes his career to python ecosystem and is a big fan of the language.
